@@ -50,15 +50,11 @@ autolabeler:
   - label: 'chore'
     branch:
       - '/chore\/.+/'
-    title:
-      - '/chore/i'
   - label: 'bug'
     branch:
       - '/bug\/.+/'
       - '/bugfix\/.+/'
       - '/hotfix\/.+/'
-    title:
-      - '/fix/i'
   - label: 'feature'
     branch:
       - '/feature\/.+/'
