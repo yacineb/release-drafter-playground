@@ -12,18 +12,7 @@ on:
 permissions:
   contents: read
 
-jobs:
-  pr-labeler:
-    permissions:
-      contents: read # for TimonVS/pr-labeler-action to read config file
-      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
-    runs-on: ubuntu-latest
-    steps:
-      - uses: TimonVS/pr-labeler-action@v5
-       #  configs is in pr-labeler.yml
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          
+jobs:     
   update_release_draft:
     permissions:
       # write permission is required to create a github release
