@@ -8,6 +8,10 @@ on:
     # pull_request event is required only for autolabeler
     types: [opened, reopened, synchronize]
 
+permissions:
+  pull-requests: write
+  id-token: write
+
 jobs:
   update_release_draft:
     runs-on: ubuntu-latest
