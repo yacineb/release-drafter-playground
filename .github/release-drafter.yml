@@ -47,5 +47,12 @@ autolabeler: # assign labels to pr according to files having changed
     files:
       - '*.lock'
       - 'pyproject.toml'
-
-# other labels: github_actions
+  - label: 'front'
+    files:
+      - '*.ts'
+      - '*.tsx'
+      - '*.html'
+      - '*.css'
+  - label: 'github_actions'
+    files:
+      - '.github/**'

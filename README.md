@@ -10,7 +10,7 @@ Also, there is another [github action](./.github/workflows/release_slack_notific
 
 The draft change note is constructed based on the available github labels:
 
-### Change releated labels
+### Change related labels
 
 - bug - Something isn't working
 - chore - Changes that do not relate to a bug or feature
@@ -25,6 +25,3 @@ The draft change note is constructed based on the available github labels:
 ### Other
 
 - skip-changelog - Won't be included in the changelog
-
-You can find them [here](https://github.com/joelazar/releaser-example/issues/labels) too.
-# release-drafter-playground
