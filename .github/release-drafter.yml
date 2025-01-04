@@ -47,20 +47,5 @@ autolabeler:
     files:
       - '*.lock'
       - 'pyproject.toml'
-  - label: 'chore'
-    branch:
-      - '/chore\/.+/'
-  - label: 'bug'
-    branch:
-      - '/bug\/.+/'
-      - '/bugfix\/.+/'
-      - '/hotfix\/.+/'
-      - '/fix\/.+/'
-  - label: 'feature'
-    branch:
-      - '/feature\/.+/'
-      - '/feat\/.+/'
 
-
-
-# other labels: github_actions , python + support conv commits: feat: , build:, chore:, ci:, docs:, style:, refactor:, perf:, test:
+# other labels: github_actions
