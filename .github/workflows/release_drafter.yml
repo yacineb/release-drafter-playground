@@ -13,6 +13,17 @@ permissions:
   contents: read
 
 jobs:
+  pr-labeler:
+    permissions:
+      contents: read # for TimonVS/pr-labeler-action to read config file
+      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TimonVS/pr-labeler-action@v5
+       #  configs is in pr-labeler.yml
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
   update_release_draft:
     permissions:
       # write permission is required to create a github release
@@ -23,9 +34,10 @@ jobs:
     steps:
       # Drafts your next Release notes as Pull Requests are merged into "master"
       - uses: release-drafter/release-drafter@v6
-        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+        #  config is in release-drafter.yml
         # with:
         #   config-name: my-config.yml
         #   disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

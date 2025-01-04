@@ -33,7 +33,7 @@ template: |
   ## What's changed
 
   $CHANGES
-autolabeler:
+autolabeler: # assign labels to pr according to files having changed
   - label: 'python'
     files:
       - '*.py'
@@ -47,20 +47,5 @@ autolabeler:
     files:
       - '*.lock'
       - 'pyproject.toml'
-  - label: 'chore'
-    branch:
-      - '/chore\/.+/'
-  - label: 'bug'
-    branch:
-      - '/bug\/.+/'
-      - '/bugfix\/.+/'
-      - '/hotfix\/.+/'
-      - '/fix\/.+/'
-  - label: 'feature'
-    branch:
-      - '/feature\/.+/'
-      - '/feat\/.+/'
 
-
-
-# other labels: github_actions , python + support conv commits: feat: , build:, chore:, ci:, docs:, style:, refactor:, perf:, test:
+# other labels: github_actions
