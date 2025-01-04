@@ -55,4 +55,4 @@ autolabeler: # assign labels to pr according to files having changed
       - '*.css'
   - label: 'github_actions'
     files:
-      - '.github/**'
+      - '.github/**/*.yml'
