@@ -4,6 +4,7 @@ categories:
   - title: '✨ Features'
     labels:
       - 'feature'
+      - 'enhancement'
   - title: '🐛 Bug Fixes'
     labels:
       - 'fix'
@@ -25,7 +26,10 @@ version-resolver:
       - 'minor'
   patch:
     labels:
-      - 'patch'
+      - 'bug'
+      - 'chore'
+      - 'documentation'
+      - 'dependencies'
   default: patch
 exclude-labels:
   - 'skip-changelog'
@@ -33,6 +37,9 @@ template: |
   ## What's changed
 
   $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+
 autolabeler: # assign labels to pr according to files having changed
   - label: 'python'
     files:
@@ -47,5 +54,16 @@ autolabeler: # assign labels to pr according to files having changed
     files:
       - '*.lock'
       - 'pyproject.toml'
-
-# other labels: github_actions
+  - label: 'front'
+    files:
+      - '*.ts'
+      - '*.tsx'
+      - '*.html'
+      - '*.css'
+  - label: 'github_actions'
+    files:
+      - '.github/**/*.yml'
+  - label: 'enhancement'
+    branch:
+      - '/feature\/.+/'
+      - '/feat\/.+/'
