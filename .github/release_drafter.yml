@@ -6,10 +6,14 @@ categories:
       - 'feature'
   - title: '🐛 Bug Fixes'
     labels:
+      - 'fix'
+      - 'bugfix'
       - 'bug'
   - title: '🧰 Maintenance'
     labels:
       - 'chore'
+      - 'documentation'
+      - 'dependencies'
 change-template: '- $TITLE (#$NUMBER by @$AUTHOR)'
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
@@ -30,14 +34,35 @@ template: |
 
   $CHANGES
 autolabeler:
+  - label: 'python'
+    files:
+      - '*.py'
+  - label: 'rust'
+    files:
+      - '*.rs'
+  - label: 'documentation'
+    files:
+      - '*.md'
+  - label: 'dependencies'
+    files:
+      - '*.lock'
+      - 'pyproject.toml'
   - label: 'chore'
     branch:
       - '/chore\/.+/'
+    title:
+      - '/chore/i'
   - label: 'bug'
     branch:
       - '/bug\/.+/'
       - '/bugfix\/.+/'
       - '/hotfix\/.+/'
+    title:
+      - '/fix/i'
   - label: 'feature'
     branch:
       - '/feature\/.+/'
+
+
+
+# other labels: github_actions , python + support conv commits: feat: , build:, chore:, ci:, docs:, style:, refactor:, perf:, test:
