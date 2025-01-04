@@ -1,0 +1,37 @@
+name: Production deploy
+on: workflow_dispatch
+
+jobs:
+  deploy-prod:
+    name: 🚀 Production deployment
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Wait for possible ongoing staging deployment to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: main
+          check-name: '🚀 Staging deployment'
+          repo-token: ${{ secrets.PAT }}
+          wait-interval: 20
+
+      - name: Do some magic
+        run: echo magic
+
+      - name: Get lastest draft release
+        id: get_latest_draft_release
+        run: |
+          echo "::set-output name=DRAFT_RELEASE::$(gh release list -L 1 -R $GITHUB_REPOSITORY | grep Draft)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - uses: release-drafter/release-drafter@v5
+        if: ${{ github.ref == 'refs/heads/main' && steps.get_latest_draft_release.outputs.DRAFT_RELEASE }}
+        with:
+          config-name: release_drafter.yml
+          disable-autolabeler: false
+          publish: true
+        env:
+          # Using own PAT because other github action won't be triggered otherwise
+          # https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#triggering-a-workflow-from-a-workflow
+          GITHUB_TOKEN: ${{ secrets.PAT }}
