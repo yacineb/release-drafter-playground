@@ -45,7 +45,7 @@ template: |
 
   **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
 
-autolabeler: # assign labels to pr according to files having changed
+autolabeler: # assign labels to pr according to files having changed or branch naming
   - label: 'python'
     files:
       - '*.py'
@@ -73,3 +73,11 @@ autolabeler: # assign labels to pr according to files having changed
     branch:
       - '/feature\/.+/'
       - '/feat\/.+/'
+  - label: 'bug'
+    branch:
+      - '/bug\/.+/'
+      - '/fix\/.+/'
+      - '/hotfix\/.+/'
+  - label: 'chore'
+    branch:
+      - '/chore\/.+/'

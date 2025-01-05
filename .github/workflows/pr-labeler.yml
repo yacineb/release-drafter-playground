@@ -38,5 +38,5 @@ jobs:
               - type: 'chore'
                 nouns: ['lint','style', 'chore']
                 labels: ['chore']
-          maintain-labels-not-matched: false
+          maintain-labels-not-matched: true
           apply-changes: true
