@@ -43,8 +43,6 @@ template: |
 
   $CHANGES
 
-  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
-
 autolabeler: # assign labels to pr according to files having changed or branch naming
   - label: 'python'
     files:
