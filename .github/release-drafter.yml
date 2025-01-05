@@ -59,6 +59,7 @@ autolabeler: # assign labels to pr according to files having changed
     files:
       - '*.lock'
       - 'pyproject.toml'
+      - 'requirements.txt'
   - label: 'front'
     files:
       - '*.ts'
