@@ -1,20 +1,42 @@
-name: PR Labeler
+name: Autolabelling of PR based on conventional commits
+
 on:
   pull_request:
-    types: [opened]
+    branches: [main]
+    types:
+      [opened, reopened, labeled, unlabeled]
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
-  pr-labeler:
-    permissions:
-      contents: read # for TimonVS/pr-labeler-action to read config file
-      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
+  assign-labels:
     runs-on: ubuntu-latest
+    name: Assign labels in pull request
+    if: github.event.pull_request.merged == false
     steps:
-      - uses: TimonVS/pr-labeler-action@v5
-        #  configs is in .github/pr-labeler.yml (labelling based on branch names and conventional commits)
+      - uses: actions/checkout@v3
+
+      - uses: mauroalderete/action-assign-labels@v1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          conventional-commits: |
+            conventional-commits:
+              - type: 'fix'
+                nouns: ['FIX', 'Fix', 'fix', 'FIXED', 'Fixed', 'fixed']
+                labels: ['bug']
+              - type: 'feature'
+                nouns: ['FEATURE', 'Feature', 'feature', 'FEAT', 'Feat', 'feat']
+                labels: ['enhancement']
+              - type: 'documentation'
+                nouns: ['doc','docu','document','documentation']
+                labels: ['documentation']
+              - type: 'build'
+                nouns: ['build','ci']
+                labels: ['github_actions']
+              - type: 'chore'
+                nouns: ['lint','style', 'chore']
+                labels: ['chore']
+          maintain-labels-not-matched: false
+          apply-changes: true
