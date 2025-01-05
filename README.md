@@ -16,6 +16,8 @@ The draft change note is constructed based on the available github labels:
 - chore - Changes that do not relate to a bug or feature
 - feature - New feature or improvement
 
+it captures conventional commits too
+
 ### Semantic versioning labels
 
 - major - Following change needs a major version update
